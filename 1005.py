@@ -5,12 +5,13 @@ class Solution:
         memo = {0}
         key = set()
         def callatz(num):
-            if num == 0:
-                return
-            if num % 2 == 0:
-                yield num // 2
-            else:
-                yield (num * 3 + 1) // 2
+            while num != 1:
+                if num % 2 == 0:
+                    num = num // 2
+                    yield num
+                else:
+                    num = (num * 3 + 1) // 2
+                    yield num
         for num in nums:
             if num not in memo:
                 key.add(num)
